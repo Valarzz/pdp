@@ -1,0 +1,19 @@
+# Adaptation / evaluation config -- PickUpCup
+domain: pick_up_cup
+state_dim: 22
+action_dim: 8
+horizon: 107
+
+data:
+  dir: data/pick_up_cup
+
+encoder_checkpoint: results/pick_up_cup/encoder/best_model.pt
+policy_checkpoint: results/pick_up_cup/pdp/best_model.pt
+
+adapt:
+  demo: shiftdemo1          # one of: shiftdemo1 | shiftdemo2 | shiftdemo3
+  ftl_igm_epochs: 300
+  lr: 3.0e-3
+  n_timestep_samples: 16
+  warm_start: true
+  device: cuda:0

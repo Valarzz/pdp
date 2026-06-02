@@ -1,0 +1,27 @@
+# PDP (parameterized diffusion policy) training config -- PlaceBlock
+domain: place_block
+state_dim: 22
+action_dim: 8
+horizon: 64
+
+data:
+  dir: data/place_block
+  training: training.npz
+
+encoder_checkpoint: results/place_block/encoder/best_model.pt
+
+model:
+  z_dim: 2
+  mlp_dims: [768, 768, 768, 768, 768]
+  time_dim: 16
+  denoising_steps: 20
+  ddim_steps: 8
+  use_ddim: true
+  film_at_layers: all
+
+train:
+  batch_size: 256
+  num_epochs: 8000
+  lr: 1.0e-4
+  device: cuda:0
+  save_dir: results/place_block/pdp

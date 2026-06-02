@@ -1,0 +1,19 @@
+# Adaptation / evaluation config -- CloseDrawer
+domain: close_drawer
+state_dim: 22
+action_dim: 8
+horizon: 87
+
+data:
+  dir: data/close_drawer
+
+encoder_checkpoint: results/close_drawer/encoder/best_model.pt
+policy_checkpoint: results/close_drawer/pdp/best_model.pt
+
+adapt:
+  demo: shiftdemo1          # one of: shiftdemo1 | shiftdemo2 | shiftdemo3
+  ftl_igm_epochs: 300       # FTL-IGM latent optimization steps (0 = warm-start z only)
+  lr: 3.0e-3
+  n_timestep_samples: 16
+  warm_start: true          # initialize z from the demo via the encoder
+  device: cuda:0

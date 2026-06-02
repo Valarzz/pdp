@@ -1,0 +1,29 @@
+# Trajectory-encoder training config -- MeatOffGrill
+domain: meat_off_grill
+state_dim: 22
+action_dim: 8
+horizon: 64
+
+data:
+  dir: data/meat_off_grill
+  training: training.npz
+
+encoder:
+  type: normalized_ee
+  latent_dim: 2
+  hidden_dim: 128
+  num_layers: 4
+  num_heads: 4
+
+train:
+  batch_size: 32
+  num_epochs: 5000
+  lr: 1.0e-4
+  recon_weight: 1.0
+  kl_weight: 0.001
+  dtw_weight: 1.0
+  dtw_gamma: 1.0e-5
+  geometry: ee     # shape-normalized EE path (two-stage task)
+  save_freq: 500
+  device: cuda:0
+  save_dir: results/meat_off_grill/encoder

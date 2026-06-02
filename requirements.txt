@@ -1,0 +1,4 @@
+torch==2.4.0
+numpy==1.26.4
+PyYAML==6.0.2
+numba==0.62.1
